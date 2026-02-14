@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Valentine Moment</title>
+    <style>
+        :root {
+            --primary-pink: #ff4d6d;
+            --soft-pink: #fff0f3;
+            --dark-pink: #c9184a;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--soft-pink);
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            text-align: center;
+            overflow-x: hidden;
+        }
+
+        .page {
+            display: none;
+            padding: 30px;
+            max-width: 600px;
+            width: 90%;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            animation: fadeIn 0.8s ease-in;
+        }
+
+        .active { display: block; }
+
+        h1 { color: var(--dark-pink); font-size: 1.8rem; }
+        p { font-size: 1.1rem; line-height: 1.6; color: #555; }
+
+        .btn {
+            background-color: var(--primary-pink);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 77, 109, 0.3);
+        }
+
+        /* Photo Gallery Styling - High Visibility */
+        .gallery {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .gallery img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 15px;
+            border: 5px solid #fff;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .love-meter-container { margin: 25px 0; }
+        input[type=range] { width: 80%; accent-color: var(--primary-pink); }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="page1" class="page active">
+        <h1>A Valentine Moment</h1>
+        <p>A Valentine Moment is being prepared for you...</p>
+        <p>(Catch the button 😄)</p>
+        <button class="btn" id="btn1" onmouseover="moveButton(this)" onclick="nextPage(2)">Click Me!</button>
+    </div>
+
+    <div id="page2" class="page">
+        <h1>A Valentine Moment</h1>
+        <p>A Valentine Moment is being prepared for you...</p>
+        <p>(Catch the button 😄)</p>
+        <button class="btn" id="btn2" onmouseover="moveButton(this)" onclick="nextPage(3)">Catch Me Again!</button>
+    </div>
+
+    <div id="page3" class="page">
+        <h1>A Valentine Note 💌</h1>
+        <p>Hey Puchkiii,</p>
+        <p>Every small moment with you feels softer, warmer, and brighter. This page is a tiny reminder that you are appreciated more than words can say.</p>
+        <p><strong>Always 💕 — Puchku</strong></p>
+        <button class="btn" onclick="nextPage(4)">Next ➡️</button>
+    </div>
+
+    <div id="page4" class="page">
+        <h1>Memory Game 🧩</h1>
+        <p>Match the hearts to move forward!</p>
+        <div id="gameGrid" style="display:grid; grid-template-columns: repeat(3, 1fr); gap:10px;"></div>
+        <button class="btn" id="gameNext" style="display:none;" onclick="nextPage(5)">Next ➡️</button>
+    </div>
+
+    <div id="page5" class="page">
+        <h1>Random Thoughts 📸</h1>
+        <div class="gallery">
+            <img src="https://via.placeholder.com/400x400?text=Photo+1" alt="Memory 1">
+            <img src="https://via.placeholder.com/400x400?text=Photo+2" alt="Memory 2">
+            <img src="https://via.placeholder.com/400x400?text=Photo+3" alt="Memory 3">
+            <img src="https://via.placeholder.com/400x400?text=Photo+4" alt="Memory 4">
+        </div>
+        <button class="btn" onclick="nextPage(6)">One more thing...</button>
+    </div>
+
+    <div id="page6" class="page">
+        <h1>One Last Valentine Thought 💝</h1>
+        <p>No big speeches — just a simple truth: you make ordinary moments feel special.</p>
+        <div class="love-meter-container">
+            <p>How much do you love me? 😄</p>
+            <p>Love meter: <span id="meterVal">50%</span></p>
+            <input type="range" min="1" max="100" value="50" oninput="document.getElementById('meterVal').innerText = this.value + '%'">
+        </div>
+        <button class="btn" style="background: #000;" onclick="nextPage(7)">Don’t click this 😈</button>
+        <p>The End 💝</p>
+    </div>
+
+    <div id="page7" class="page">
+        <h1>Wait… one more thing 🥺</h1>
+        <p>Even after all the pranks…</p>
+        <p>I hope this made you smile today.</p>
+        <p>Happy Valentine’s Day 💗</p>
+        <button class="btn" onclick="nextPage(8)">One last letter 💌</button>
+    </div>
+
+    <div id="page8" class="page">
+        <h1>A Letter From My Heart 💌</h1>
+        <p>Hey Puchkiii,</p>
+        <p>I know I joke around and annoy you sometimes… but the truth is, I really care about you.</p>
+        <p>You make simple days feel special, and even small moments with you stay in my mind for a long time. I don’t always say it perfectly, but I genuinely feel lucky that you’re here.</p>
+        <p>If this little website made you smile even once, then it did its job.</p>
+        <p><strong>Always yours 💕 — Puchku</strong></p>
+        <button class="btn" onclick="location.reload()">Restart 💘</button>
+    </div>
+
+    <script>
+        let moveCount = 0;
+
+        function moveButton(btn) {
+            // Only move the button 3 times, then let them click it!
+            if (moveCount < 3) {
+                const x = Math.random() * (window.innerWidth - btn.offsetWidth);
+                const y = Math.random() * (window.innerHeight - btn.offsetHeight);
+                btn.style.position = 'fixed';
+                btn.style.left = x + 'px';
+                btn.style.top = y + 'px';
+                moveCount++;
+            } else {
+                btn.style.position = 'static'; // Stays put so she can click
+            }
+        }
+
+        function nextPage(num) {
+            moveCount = 0; // Reset for page 2
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.getElementById('page' + num).classList.add('active');
+            if(num === 4) startMemoryGame();
+        }
+
+        function startMemoryGame() {
+            const icons = ['❤️', '💖', '✨', '❤️', '💖', '✨'];
+            icons.sort(() => Math.random() - 0.5);
+            const grid = document.getElementById('gameGrid');
+            grid.innerHTML = '';
+            let flipped = [];
+            let matched = 0;
+
+            icons.forEach(icon => {
+                const card = document.createElement('div');
+                card.style = "height:70px; background:var(--primary-pink); color:white; display:flex; align-items:center; justify-content:center; font-size:1.5rem; border-radius:10px; cursor:pointer;";
+                card.dataset.icon = icon;
+                card.innerHTML = '?';
+                card.onclick = function() {
+                    if (flipped.length < 2 && this.innerHTML === '?') {
+                        this.innerHTML = icon;
+                        flipped.push(this);
+                        if (flipped.length === 2) {
+                            if (flipped[0].dataset.icon === flipped[1].dataset.icon) {
+                                matched++;
+                                flipped = [];
+                                if (matched === 3) document.getElementById('gameNext').style.display = 'inline-block';
+                            } else {
+                                setTimeout(() => { flipped.forEach(c => c.innerHTML = '?'); flipped = []; }, 500);
+                            }
+                        }
+                    }
+                };
+                grid.appendChild(card);
+            });
+        }
+    </script>
+</body>
+</html>
